@@ -13,6 +13,9 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <climits>
+#include <cmath>
 #include "algorithms.h"
 
 using namespace std;
@@ -41,16 +44,70 @@ int fcfs(const vector<int>& requests)
 
 /*
  * Shortest Seek Time First (SSTF)
+ * Services closest request to current disk arm position
  */
 int sstf(const vector<int>& requests)
 {
-    return 0;
+    // Track which requests were serviced
+    vector<bool> serviced(requests.size(), false);
+
+    // Disk arm starts @ cylinder 0
+    int curr = 0;
+
+    // Total distance traveled
+    int dist = 0;
+
+    // Continue until all requests get serviced
+    for (size_t count = 0; count < requests.size(); count++)
+    {
+        // Use closest request found so far
+        int minDist = INT_MAX;
+
+        // Find closest unserviced request
+        for (size_t i = 0; i < requests.size(); i++)
+        {
+            if (!iserviced[i])
+            {
+                int seek = abs(requests[i] - curr);
+
+                if (seek < minDist)
+                {
+                    minDist = seek;
+                    closestIndex = i;
+                }
+            }
+        }
+        // Service closest request
+        serviced[closestIndex] = true;
+        dist += minDist;
+        curr = requests[closestIndex];
+    }
+    return dist;
 }
 
 /*
  * Elevator Algorithm (SCAN)
+ * Services requests in ascending cylinder order
  */
 int elevator(const vector<int>& requests)
 {
-    return 0;
+    // Copy requests so original sequence is unchanged
+    vector<int> sorted = requests;
+
+    // Sort requests in ascending order
+    sort(sorted.begin(), sorted.end());
+
+    // Disk arm starts @ cylinder 0
+    int curr = 0;
+
+    // Total distance traveled
+    int dist = 0;
+
+    // Visit each of the requests in order
+    for (size_t i = 0; i < sorted.size(); i++)
+    {
+        dist += abs(sorted[i] - curr);
+        curr = sorted[i];
+    }
+    return dist;
 }

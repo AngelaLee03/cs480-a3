@@ -60,6 +60,9 @@ int sstf(const vector<int>& requests)
     // Continue until all requests get serviced
     for (size_t count = 0; count < requests.size(); count++)
     {
+        // Closest request found so far
+        int closestIndex = -1;
+        
         // Use closest request found so far
         int minDist = INT_MAX;
 

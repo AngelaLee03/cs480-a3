@@ -66,7 +66,7 @@ int sstf(const vector<int>& requests)
         // Find closest unserviced request
         for (size_t i = 0; i < requests.size(); i++)
         {
-            if (!iserviced[i])
+            if (!serviced[i])
             {
                 int seek = abs(requests[i] - curr);
 

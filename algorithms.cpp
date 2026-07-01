@@ -19,10 +19,24 @@ using namespace std;
 
 /*
  * First-Come, First-Served (FCFS)
+ * Services requests in the order they were generated.
  */
 int fcfs(const vector<int>& requests)
 {
-    return 0;
+    // Disk arm starts at cylinder 0
+    int current = 0;
+    
+    // Total distance traveled
+    int distance = 0;
+
+    // Visit each request in order
+    for (size_t i = 0; i < requests.size(); i++)
+    {
+        distance += abs(requests[i] - current);
+        current = requests[i];
+    }
+    
+    return distance;
 }
 
 /*

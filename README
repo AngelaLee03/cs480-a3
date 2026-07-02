@@ -1,0 +1,137 @@
+CS480 Summer 2026
+Programming Assignment #3: Disk Arm Scheduling Simulation
+
+Filename: README
+
+Name: Angela Lee
+Class Account: cssc3130
+
+Partner Name: Caitlin Corpus
+Class Account: cssc3114
+
+Testing Account: cssc3130
+
+---
+
+FILES INCLUDED:
+
+main.cpp
+Contains the main function. Reads the command-line argument, generates the random cylinder request sequence, and runs each disk scheduling algorithm.
+
+algorithms.cpp
+Contains the implementations of the disk arm scheduling algorithms.
+
+algorithms.h
+Header file containing the function prototypes for the scheduling algorithms.
+
+Makefile
+Compiles the project and creates the executable named simarm.
+
+README
+Project description and operating instructions.
+
+---
+
+COMPILATION:
+
+To compile the project:
+
+make
+
+---
+
+RUNNING THE PROGRAM:
+
+To execute the simulation:
+
+./simarm <sequence_length>
+
+Example:
+
+./simarm 64
+
+This generates a random sequence of 64 cylinder requests ranging from 0 to 999 and executes each disk arm scheduling algorithm using the same sequence.
+
+---
+
+CLEANING FILES:
+
+To remove object files and the executable:
+
+make clean
+
+---
+
+PROGRAM DESCRIPTION:
+
+This program simulates disk arm scheduling by generating a random sequence of cylinder requests and executing three scheduling algorithms using the same request sequence.
+
+The program:
+
+* Accepts the sequence length as a command-line argument.
+* Generates random cylinder requests between 0 and 999.
+* Executes the First-Come, First-Served (FCFS) algorithm.
+* Executes the Shortest Seek Time First (SSTF) algorithm.
+* Executes the Elevator (SCAN) algorithm.
+* Calculates and displays the total cylinder distance traveled by the disk arm for each algorithm.
+
+---
+
+DESIGN DECISIONS:
+
+* The program is divided into multiple source files to keep the project organized.
+* main.cpp acts as a table of contents and controls the simulation.
+* algorithms.cpp contains the scheduling algorithms.
+* algorithms.h stores the function prototypes.
+* The same randomly generated sequence is used for all algorithms to ensure a fair comparison.
+* Cylinder requests are generated within the range 0-999 as specified by the assignment.
+* The simulation assumes the disk arm begins at cylinder 0.
+* The Elevator algorithm initially moves upward through the request sequence.
+
+---
+
+WORK DISTRIBUTION:
+
+Angela Lee:
+
+* Created the project structure.
+* Wrote main.cpp.
+* Created the Makefile.
+* Wrote the README.
+* Implemented the FCFS scheduling algorithm.
+* Tested compilation and execution on edoras.
+
+Caitlin Corpus:
+
+* Implemented the SSTF scheduling algorithm.
+* Implemented the Elevator (SCAN) scheduling algorithm.
+* Assisted with testing and debugging.
+
+Both partners:
+
+* Planned the program design.
+* Reviewed and tested the completed project.
+* Verified the simulation output on edoras.
+
+---
+
+EXTRA FEATURES:
+
+No additional features were implemented beyond the assignment requirements.
+
+---
+
+KNOWN DEFICIENCIES OR BUGS:
+
+No known bugs at this time.
+
+---
+
+LESSONS LEARNED:
+
+* Learned how disk arm scheduling algorithms affect seek distance.
+* Learned the differences between FCFS, SSTF, and the Elevator (SCAN) algorithm.
+* Learned how to organize a project across multiple source files.
+* Learned how to compare algorithm performance using the same simulated workload.
+* Learned how different scheduling strategies impact overall disk performance.
+
